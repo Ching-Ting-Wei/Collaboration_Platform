@@ -1,6 +1,18 @@
-# Getting Started with Create React App
+# Getting Started with this Web
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+First, cloning the repository to your local.
+```
+    git clone https://github.com/Ching-Ting-Wei/collaboration_platform.git
+```
+
+Second, installing the dependencies to your local.
+```
+    cd collaboration_platform
+    npm install 
+```
+
+
 
 ## Available Scripts
 
