@@ -4,23 +4,20 @@ import {HashRouter as  Router,  Routes, Route} from "react-router-dom";
 import LoginPage from '../../pages/LoginPage'
 import HomePage from '../../pages/HomePage'
 import Header from "../Header";
-
+import {ResetStyle, GlobalStyle} from '../globalStyle'
 const Root = styled.div`
-  padding-top: 64px; 
 `;
 
 function App() {
   return(
     <Root>
+      <ResetStyle></ResetStyle>        
+      <GlobalStyle></GlobalStyle>   
       <Router>
-        <Header />
+        <Header/>
         <Routes>
-          <Route exact path="/">
-            <HomePage/>
-          </Route>
-          <Route path="/login">
-            <LoginPage/>
-          </Route>
+          <Route element={<HomePage/>} exact path={"/"}></Route>
+          <Route element={<LoginPage/>} path={"/login"}></Route>
         </Routes>
       </Router>
     </Root>
