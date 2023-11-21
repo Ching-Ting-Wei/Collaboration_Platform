@@ -1,12 +1,12 @@
 # Getting Started with this Web
 
 
-First, cloning the repository to your local.
+First, cloning the repository.
 ```
     git clone https://github.com/Ching-Ting-Wei/collaboration_platform.git
 ```
 
-Second, installing the dependencies to your local.
+Second, installing the dependencies.
 ```
     cd collaboration_platform
     npm install 
@@ -16,7 +16,7 @@ Second, installing the dependencies to your local.
 
 ## Available Scripts
 
-In the project directory, you can run:
+Finally, in the project directory, you can run:
 
 ### `npm start`
 
