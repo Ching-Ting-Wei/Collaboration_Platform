@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 
 const HeaderContainter = styled.div`
     height: 64px;
@@ -49,16 +49,17 @@ const LContainer = styled.div`
 `;
 
 export default function App(){
+    const location = useLocation();
     return(
         <HeaderContainter>
         <LContainer>
             <Brand>123</Brand>
             <NavbarList>
-                <Nav to="/" $active>Introduction</Nav>
+                <Nav to='/' $active={location.pathname === '/'}>Introduction</Nav>
             </NavbarList>
         </LContainer>
         <NavbarList>
-            <Nav to="/login">Log in</Nav>
+            <Nav to='/login' $active={location.pathname === '/login'}>Log in</Nav>
         </NavbarList>
         </HeaderContainter>
 
