@@ -56,6 +56,7 @@ export default function App(){
             <Brand>123</Brand>
             <NavbarList>
                 <Nav to='/' $active={location.pathname === '/'}>Introduction</Nav>
+                <Nav to='/todoitem' $active={location.pathname === '/todoitem'}>Try it</Nav>
             </NavbarList>
         </LContainer>
         <NavbarList>
