@@ -3,9 +3,10 @@ import styled from "styled-components";
 import {HashRouter as  Router,  Routes, Route} from "react-router-dom";
 import LoginPage from '../../pages/LoginPage'
 import HomePage from '../../pages/HomePage'
-import TodoItem from "../TodoItem";
+import GroupPage from "../../pages/GroupPage";
 import Header from "../Header";
 import {ResetStyle, GlobalStyle} from '../globalStyle'
+
 const Root = styled.div`
 `;
 const BG  = styled.div`
@@ -28,7 +29,7 @@ function App() {
           <Routes>
             <Route element={<HomePage/>} exact path={"/"}></Route>
             <Route element={<LoginPage/>} path={"/login"}></Route>
-            <Route element={<TodoItem/>} path={"/todoitem"}></Route>
+            <Route element={<GroupPage/>} path={"/todoitem"}></Route>
           </Routes>
         </BG>
       </Router>
