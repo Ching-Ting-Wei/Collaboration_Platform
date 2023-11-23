@@ -42,13 +42,13 @@ const Title = styled.div`
 
 const Subtitle = styled.input`
   color: #000;
-  white-space: nowrap;
   border-radius: 10px;
   background-color: #fff8f0;
   align-items: start;
   font-size:24px;
   height: 36px;
   width: 384px;
+  padding-left: 8px;
 `;
 
 const TotalQuestions = styled.div`
@@ -57,7 +57,6 @@ const TotalQuestions = styled.div`
   align-items: center;
   align-self: stretch;
   margin-top: 20px;
-  white-space: nowrap;
   font-size: 24px;
 `;
 
@@ -69,6 +68,7 @@ const InputQuestion = styled.input`
   margin-right:8px;
   background-color: #fff8f0;
   font-size: 20px;
+  padding-left: 8px;
 `;
 
 const Actions = styled.div`
