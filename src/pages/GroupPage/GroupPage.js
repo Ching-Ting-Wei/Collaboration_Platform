@@ -27,7 +27,7 @@ const Button = styled.button`
 
 
 export default function HomePage() {
-	const [showMask, setShowMask] = useState(false);
+  const [showMask, setShowMask] = useState(false);
 
   const toggleMask = () => {
     setShowMask(!showMask);

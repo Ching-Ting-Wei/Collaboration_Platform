@@ -30,14 +30,9 @@ const InputContainer = styled.div`
   gap: 18px;
 `;
 
-const PasswordInputBox = styled(AccountInputBox)`
-  &[type='password'] {
-      background: red;
-  }
-`;
-
-
-
+const PasswordInputBox = styled(AccountInputBox).attrs(
+  {type: 'password'})`
+ `;
 
 
 const LoginTitle = styled.div`
@@ -93,7 +88,7 @@ export default function LoginPage() {
       </InputContainer>
 
       <Forget>
-        forget password?
+        Forget password?
       </Forget>
 
       <LoginButton>
@@ -101,7 +96,7 @@ export default function LoginPage() {
       </LoginButton>
 
       <SignupButton>
-        Sign up
+        Sign Up
       </SignupButton>
     </Content>
   )
