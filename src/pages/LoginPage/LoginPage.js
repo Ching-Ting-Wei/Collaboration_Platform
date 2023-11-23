@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Button from 'react-bootstrap/Button';
 import {HashRouster as  Router, Switch, Route} from "react-router-dom";
 
 
@@ -20,30 +21,64 @@ const AccountInputBox = styled.input`
 const InputContainer = styled.div`
   align-self: center;
   display: flex;
+  justify-content: space-between;
   vertical-align: center;
-  // margin-top:280px;
   width: 375px;
   max-width: 100%;
   align-items: center;
+  margin-bottom: 16px;
   gap: 18px;
-  padding: 0 20px;
-  &&
 `;
+
+const PasswordInputBox = styled(AccountInputBox)`
+  &[type='password'] {
+      background: red;
+  }
+`;
+
+
+
+
 
 const LoginTitle = styled.div`
   color: #000;
   text-align: center;
-  text-transform: uppercase;
   margin: auto 0;
-  font: 400 24px Caveat Brush, sans-serif;
-`
+  font-size: 24px;
+
+`;
 const Content = styled.div`
   background-color: var(--main-color, #fff8f0);
+  font-family:'Trebuchet MS';
   display: flex;
+  align-items:center;
   flex-direction: column;
   height: 100%;
   width: 100%;
+  position:absolute;
+  top:40%;
 `;
+
+const Forget = styled.a`
+  color: #4B4B4B;
+  font-size: 20px;
+`;
+
+const LoginButton = styled.button`
+  font-size:24px;
+  margin-top:20px;
+  height: 42px;
+  width: 375px;
+  background-color: #FF8811;
+  border-radius:10px;
+  box-shadow: 3px 4px 0px 0px #000;
+  cursor: pointer;
+`;
+
+const SignupButton = styled(LoginButton)`
+    background-color: #000000;
+    color: #ffffff;
+`
 
 export default function LoginPage() {
   return(
@@ -53,22 +88,21 @@ export default function LoginPage() {
         <AccountInputBox></AccountInputBox>
       </InputContainer>
       <InputContainer>
-        <LoginTitle>password</LoginTitle>
-        <AccountInputBox></AccountInputBox>
+        <LoginTitle>Password</LoginTitle>
+        <PasswordInputBox></PasswordInputBox>
       </InputContainer>
+
+      <Forget>
+        forget password?
+      </Forget>
+
+      <LoginButton>
+        Log In
+      </LoginButton>
+
+      <SignupButton>
+        Sign up
+      </SignupButton>
     </Content>
   )
 }
-
-// div class="login-container">
-//               <div class="login-title">gamil</div>
-//               <input type="text" class="login-input">
-//             </div>
-//             <div class="password-container">
-//               <div class="password-title">password</div>
-//               <input type="password" class="password-input" id="password">
-//             </div>
-//             <button class="login-button"  onclick="validatePassword()">log in</button>
-//             <button class="signup-button">sign up</button>
-//             <p id="message"></p>
-//           </div>
