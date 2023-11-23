@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
-
+import { useNavigate } from "react-router-dom";
 const AccountInputBox = styled.input`
   border-radius: 10px;
   border: 1px solid #000;
@@ -50,10 +49,6 @@ const Content = styled.div`
   top:40%;
 `;
 
-const Forget = styled.a`
-  color: #4B4B4B;
-  font-size: 20px;
-`;
 
 const LoginButton = styled.button`
   font-size:24px;
@@ -72,7 +67,10 @@ const SignupButton = styled(LoginButton)`
 `
 
 export default function RegisterPage() {
-  
+  const navigate = useNavigate();
+  const handleCancelClick = () => {
+    navigate('/')
+  };
 
   return(
     <Content>
@@ -95,7 +93,7 @@ export default function RegisterPage() {
         Create
       </LoginButton>
 
-      <SignupButton>
+      <SignupButton onClick={handleCancelClick}>
         Cancel
       </SignupButton>
     </Content>
