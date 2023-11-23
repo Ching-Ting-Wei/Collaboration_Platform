@@ -29,7 +29,7 @@ function App() {
           <Routes>
             <Route element={<HomePage/>} exact path={"/"}></Route>
             <Route element={<LoginPage/>} path={"/login"}></Route>
-            <Route element={<GroupPage/>} path={"/todoitem"}></Route>
+            <Route element={<GroupPage/>} path={"/grouppage"}></Route>
           </Routes>
         </BG>
       </Router>

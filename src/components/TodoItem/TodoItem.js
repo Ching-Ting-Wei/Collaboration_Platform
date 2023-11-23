@@ -8,7 +8,6 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   position: absolute;
-  background-color: #fff8f0;
   top:40%;
 `;
 
@@ -92,48 +91,23 @@ const Button = styled.div`
   align-items: center;
   padding: 9px 20px;
   font: 400 20px/25px Caveat Brush, sans-serif;
+   cursor: pointer;
 
 `;
 
 const WhiteButton = styled(Button)`
   color: black;
   background-color: var(--main-color, #FF8811);
-`;
-
-const InputField = styled.input`
-  padding: 8px;
-  margin-bottom: 10px;
-  border-radius: 3px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-`;
-
-const TodoList = styled.ul`
-  list-style: none;
-  padding: 20px;
-  background-color: white;
-  border-radius: 5px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  cursor: pointer;
 `;
 
 
-export default function TodoItem(){
-	const [todos, setTodos] = useState([]);
-  const [newTodo, setNewTodo] = useState('');
-	const handleInputChange = (e) => {
-		setNewTodo(e.target.value);
-	};
 
-	const handleAddTodo = () => {
-		if (newTodo.trim() !== '') {
-			setTodos([...todos, newTodo]);
-			setNewTodo('');
-		}
-	};
-		
+
+export default function TodoItem({ handleCloseMask }){
+  const handleReturnClick = () => {
+    handleCloseMask();
+  };
 	return(
     <Container>
       <Content>
@@ -147,7 +121,7 @@ export default function TodoItem(){
         大題
       </TotalQuestions>
       <Actions>
-        <Button>返回</Button>
+        <Button onClick={handleReturnClick}>返回</Button>
         <WhiteButton>下一步</WhiteButton>
       </Actions>
     </Content>

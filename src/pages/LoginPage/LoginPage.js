@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Button from 'react-bootstrap/Button';
-import {HashRouster as  Router, Switch, Route} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+
 
 
 
@@ -76,6 +76,16 @@ const SignupButton = styled(LoginButton)`
 `
 
 export default function LoginPage() {
+  const navigate = useNavigate();
+  const handleLoginClick = () => {
+    
+    navigate('/grouppage')
+  };
+
+  const handleRegisterClick = () => {
+    
+    navigate('/signuppage')
+  };
   return(
     <Content>
       <InputContainer>
@@ -91,11 +101,11 @@ export default function LoginPage() {
         Forget password?
       </Forget>
 
-      <LoginButton>
+      <LoginButton onClick={handleLoginClick}>
         Log In
       </LoginButton>
 
-      <SignupButton>
+      <SignupButton onClick={handleRegisterClick}>
         Sign Up
       </SignupButton>
     </Content>

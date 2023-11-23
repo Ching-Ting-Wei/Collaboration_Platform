@@ -1,7 +1,7 @@
 import React from "react";
 import TodoItem from "../../components/TodoItem";
 import styled from "styled-components";
-import { useState } from 'react';
+import { useState ,useRef, useEffect } from 'react';
 import {HashRouster as  Router, Switch, Route} from "react-router-dom";
 
 const Mask = styled.div`
@@ -26,20 +26,25 @@ const Button = styled.button`
 `;
 
 
-export default function HomePage() {
+export default function GroupPage() {
   const [showMask, setShowMask] = useState(false);
+  const maskRef = useRef(null);
 
   const toggleMask = () => {
     setShowMask(!showMask);
   };
+  const handleCloseMask = () => {
+    setShowMask(false);
+  };
+
+
 
   return (
     <div>
-      {/* <Button onClick={toggleMask}>Toggle Mask</Button>
-      <Mask show={showMask} onClick={toggleMask}>
-				
-			</Mask> */}
-      <TodoItem></TodoItem>
+      <Button onClick={toggleMask}>Toggle Mask</Button>
+      <Mask show={showMask} ref={maskRef}>
+	  	<TodoItem handleCloseMask={handleCloseMask}></TodoItem>
+      </Mask>
     </div>
   );
 }
