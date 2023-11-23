@@ -1,9 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import {useNavigate} from "react-router-dom";
-
-
-
 
 
 const AccountInputBox = styled.input`
@@ -75,17 +71,9 @@ const SignupButton = styled(LoginButton)`
     color: #ffffff;
 `
 
-export default function LoginPage() {
-  const navigate = useNavigate();
-  const handleLoginClick = () => {
-    
-    navigate('/grouppage')
-  };
+export default function RegisterPage() {
+  
 
-  const handleRegisterClick = () => {
-    
-    navigate('/register')
-  };
   return(
     <Content>
       <InputContainer>
@@ -96,18 +84,22 @@ export default function LoginPage() {
         <LoginTitle>Password</LoginTitle>
         <PasswordInputBox></PasswordInputBox>
       </InputContainer>
+      <InputContainer>
+        <LoginTitle>Confirm Password</LoginTitle>
+        <PasswordInputBox></PasswordInputBox>
+      </InputContainer>
 
-      <Forget>
-        Forget password?
-      </Forget>
+     
 
-      <LoginButton onClick={handleLoginClick}>
-        Log In
+      <LoginButton>
+        Create
       </LoginButton>
 
-      <SignupButton onClick={handleRegisterClick}>
-        Sign Up
+      <SignupButton>
+        Cancel
       </SignupButton>
     </Content>
   )
 }
+
+
