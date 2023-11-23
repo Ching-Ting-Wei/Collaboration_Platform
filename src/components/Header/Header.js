@@ -53,7 +53,7 @@ export default function App(){
     return(
         <HeaderContainter>
         <LContainer>
-            <Brand>123</Brand>
+            <Brand>Focus Orange Tree</Brand>
             <NavbarList>
                 <Nav to='/' $active={location.pathname === '/'}>Introduction</Nav>
             </NavbarList>

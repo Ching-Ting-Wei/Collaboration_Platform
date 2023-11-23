@@ -20,7 +20,8 @@ const AccountInputBox = styled.input`
 const InputContainer = styled.div`
   align-self: center;
   display: flex;
-  margin-top:280px;
+  vertical-align: center;
+  // margin-top:280px;
   width: 375px;
   max-width: 100%;
   align-items: center;
@@ -40,8 +41,8 @@ const Content = styled.div`
   background-color: var(--main-color, #fff8f0);
   display: flex;
   flex-direction: column;
-  height: 1000px;
-
+  height: 100%;
+  width: 100%;
 `;
 
 export default function LoginPage() {
@@ -52,7 +53,7 @@ export default function LoginPage() {
         <AccountInputBox></AccountInputBox>
       </InputContainer>
       <InputContainer>
-        <LoginTitle>Account</LoginTitle>
+        <LoginTitle>password</LoginTitle>
         <AccountInputBox></AccountInputBox>
       </InputContainer>
     </Content>
