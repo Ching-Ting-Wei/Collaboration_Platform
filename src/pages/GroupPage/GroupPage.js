@@ -35,11 +35,11 @@ export default function HomePage() {
 
   return (
     <div>
-      <Button onClick={toggleMask}>Toggle Mask</Button>
+      {/* <Button onClick={toggleMask}>Toggle Mask</Button>
       <Mask show={showMask} onClick={toggleMask}>
-				<TodoItem></TodoItem>
-			</Mask>
-      {/* 其他页面内容 */}
+				
+			</Mask> */}
+      <TodoItem></TodoItem>
     </div>
   );
 }

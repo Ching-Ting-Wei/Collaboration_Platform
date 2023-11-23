@@ -3,17 +3,28 @@ import styled from "styled-components";
 import { useState } from "react";
 
 const Container = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  background-color: #fff8f0;
+  top:40%;
+`;
+
+const Content = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   border-radius: 20px;
+  height: 200px;
+  width: 560px;
   box-shadow: 7px 9px 0px 0px #000;
   background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
   flex-direction: column;
-  align-items: center;
   padding: 0 31px 0 25px;
 
-  @media (max-width: 991px) {
-    padding: 0 20px;
-  }
 `;
 
 const Header = styled.div`
@@ -21,13 +32,6 @@ const Header = styled.div`
   display: flex;
   margin-top: 28px;
   align-items: center;
-  justify-content: space-between;
-  gap: 11px;
-
-  @media (max-width: 991px) {
-    max-width: 100%;
-    flex-wrap: wrap;
-  }
 `;
 
 const Title = styled.div`
@@ -37,34 +41,35 @@ const Title = styled.div`
   font: 400 24px/30px Caveat Brush, sans-serif;
 `;
 
-const Subtitle = styled.div`
+const Subtitle = styled.input`
   color: #000;
   white-space: nowrap;
   border-radius: 10px;
-  background-color: var(--main-color, #fff8f0);
-  align-self: stretch;
-  flex-grow: 1;
+  background-color: #fff8f0;
   align-items: start;
-  padding: 10px 15px;
-  font: 400 24px/30px Caveat Brush, sans-serif;
-
-  @media (max-width: 991px) {
-    white-space: initial;
-  }
+  font-size:24px;
+  height: 36px;
+  width: 384px;
 `;
 
 const TotalQuestions = styled.div`
-  color: var(--main-color, #fff8f0);
-  text-transform: uppercase;
+  color: #fff8f0;
+  display: flex;
+  align-items: center;
   align-self: stretch;
   margin-top: 20px;
   white-space: nowrap;
-  font: 400 24px/30px Caveat Brush, sans-serif;
+  font-size: 24px;
+`;
 
-  @media (max-width: 991px) {
-    max-width: 100%;
-    white-space: initial;
-  }
+const InputQuestion = styled.input`
+  height: 36px;
+  width: 104px;
+  border-radius:10px;
+  margin-left: 8px;
+  margin-right:8px;
+  background-color: #fff8f0;
+  font-size: 20px;
 `;
 
 const Actions = styled.div`
@@ -88,9 +93,6 @@ const Button = styled.div`
   padding: 9px 20px;
   font: 400 20px/25px Caveat Brush, sans-serif;
 
-  @media (max-width: 991px) {
-    white-space: initial;
-  }
 `;
 
 const WhiteButton = styled(Button)`
@@ -133,28 +135,22 @@ export default function TodoItem(){
 	};
 		
 	return(
-	<Container>
-		<Header>
-			<Title>作業名稱：</Title>
-			<Subtitle>dd hw02</Subtitle>
-			<TodoList>
-			<InputField
-				type="text"
-				placeholder="Add a new todo"
-				value={newTodo}
-				onChange={handleInputChange}
-			/>
-			 <Button onClick={handleAddTodo}>Add Todo</Button>
-          {todos.map((todo, index) => (
-            <TodoItem key={index}>{todo}</TodoItem>
-          ))}
-			</TodoList>
-		</Header>
-		<TotalQuestions>共有 5 大題</TotalQuestions>
-		<Actions>
-			<Button>返回</Button>
-			<WhiteButton>下一步</WhiteButton>
-		</Actions>
-	</Container>
+    <Container>
+      <Content>
+      <Header>
+        <Title>作業名稱：</Title>
+        <Subtitle></Subtitle>
+      </Header>
+      <TotalQuestions>
+        共有
+        <InputQuestion></InputQuestion>
+        大題
+      </TotalQuestions>
+      <Actions>
+        <Button>返回</Button>
+        <WhiteButton>下一步</WhiteButton>
+      </Actions>
+    </Content>
+    </Container>
 	);
 }
