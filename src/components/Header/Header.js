@@ -49,20 +49,20 @@ const LContainer = styled.div`
 `;
 
 export default function App(){
-    const location = useLocation();
-    return(
-        <HeaderContainter>
-        <LContainer>
-            <Brand>Focus Orange Tree</Brand>
-            <NavbarList>
-                <Nav to='/' $active={location.pathname === '/'}>Introduction</Nav>
-                <Nav to='/todoitem' $active={location.pathname === '/todoitem'}>Try it</Nav>
-            </NavbarList>
-        </LContainer>
-        <NavbarList>
-            <Nav to='/login' $active={location.pathname === '/login'}>Log in</Nav>
-        </NavbarList>
-        </HeaderContainter>
+  const location = useLocation();
+  return(
+    <HeaderContainter>
+    <LContainer>
+      <Brand>Focus Orange Tree</Brand>
+      <NavbarList>
+        <Nav to='/' $active={location.pathname === '/'}>Introduction</Nav>
+        <Nav to='/todoitem' $active={location.pathname === '/todoitem'}>Try it</Nav>
+      </NavbarList>
+    </LContainer>
+    <NavbarList>
+      <Nav to='/login' $active={location.pathname === '/login'}>Log in</Nav>
+    </NavbarList>
+    </HeaderContainter>
 
-    );
+  );
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useState } from "react";
 
 const Container = styled.div`
   border-radius: 20px;
@@ -97,20 +98,63 @@ const WhiteButton = styled(Button)`
   background-color: var(--main-color, #FF8811);
 `;
 
+const InputField = styled.input`
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+`;
+
+const TodoList = styled.ul`
+  list-style: none;
+  padding: 20px;
+  background-color: white;
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
 
 export default function TodoItem(){
+	const [todos, setTodos] = useState([]);
+  const [newTodo, setNewTodo] = useState('');
+	const handleInputChange = (e) => {
+		setNewTodo(e.target.value);
+	};
 
-    return(
-    <Container>
-        <Header>
-            <Title>作業名稱：</Title>
-            <Subtitle>dd hw02</Subtitle>
-        </Header>
-        <TotalQuestions>共有 5 大題</TotalQuestions>
-        <Actions>
-            <Button>返回</Button>
-            <WhiteButton>下一步</WhiteButton>
-        </Actions>
-    </Container>
-    );
+	const handleAddTodo = () => {
+		if (newTodo.trim() !== '') {
+			setTodos([...todos, newTodo]);
+			setNewTodo('');
+		}
+	};
+		
+	return(
+	<Container>
+		<Header>
+			<Title>作業名稱：</Title>
+			<Subtitle>dd hw02</Subtitle>
+			<TodoList>
+			<InputField
+				type="text"
+				placeholder="Add a new todo"
+				value={newTodo}
+				onChange={handleInputChange}
+			/>
+			 <Button onClick={handleAddTodo}>Add Todo</Button>
+          {todos.map((todo, index) => (
+            <TodoItem key={index}>{todo}</TodoItem>
+          ))}
+			</TodoList>
+		</Header>
+		<TotalQuestions>共有 5 大題</TotalQuestions>
+		<Actions>
+			<Button>返回</Button>
+			<WhiteButton>下一步</WhiteButton>
+		</Actions>
+	</Container>
+	);
 }
