@@ -116,6 +116,8 @@ export default function TodoForm2(props){
   const {currentStep, setNum, setTitle, title, num} = props
   
 
+  
+
   if(currentStep !== 2){
     return null
   }

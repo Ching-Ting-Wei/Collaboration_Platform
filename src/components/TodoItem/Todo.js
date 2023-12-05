@@ -33,6 +33,7 @@ function Todo({ handleCloseMask}){
       title: ${title} \n 
     `)
   }
+  
   const handlePrevious = () => {
     let step = currentStep <= 1? 1: currentStep - 1
     setCurrentStep(step)
@@ -44,7 +45,6 @@ function Todo({ handleCloseMask}){
   return(
     <>
       <TodoList todos = {todoList}/>
-
       <Step1 currentStep={currentStep}
         num={num}
         setNum={setNum}
