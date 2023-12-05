@@ -1,11 +1,10 @@
 import React from "react";
-import TodoItem from "../../components/TodoItem";
+import Todo from "../../components/TodoItem";
 import styled from "styled-components";
-import { useState ,useRef, useEffect } from 'react';
-import {HashRouster as  Router, Switch, Route} from "react-router-dom";
+import { useState} from 'react';
 
 const Mask = styled.div`
-  display: ${({ show }) => (show ? 'block' : 'none')};
+  display: ${({ $show }) => ($show ? 'block' : 'none')};
   position: fixed;
   top: 0;
   left: 0;
@@ -28,11 +27,11 @@ const Button = styled.button`
 
 export default function GroupPage() {
   const [showMask, setShowMask] = useState(false);
-  const maskRef = useRef(null);
 
   const toggleMask = () => {
     setShowMask(!showMask);
   };
+
   const handleCloseMask = () => {
     setShowMask(false);
   };
@@ -41,9 +40,9 @@ export default function GroupPage() {
 
   return (
     <div>
-      <Button onClick={toggleMask}>Toggle Mask</Button>
-      <Mask show={showMask} ref={maskRef}>
-	  	<TodoItem handleCloseMask={handleCloseMask}></TodoItem>
+      <Button onClick={toggleMask}>Add HomeWork</Button>
+      <Mask $show={showMask}>
+	  	  <Todo handleCloseMask={handleCloseMask}></Todo>
       </Mask>
     </div>
   );
