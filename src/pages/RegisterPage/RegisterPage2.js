@@ -3,10 +3,19 @@ import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from '../../api/axios';
 import './index.css'
+import styled from "styled-components";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const REGISTER_URL = '/users';
+
+const SignUpButton = styled.div`
+    margin-top: 14px;
+`;
+
+const Line = styled.div`
+    text-decoration: underline;
+`;
 
 const Register = () => {
     const userRef = useRef();
@@ -165,14 +174,15 @@ const Register = () => {
                             <FontAwesomeIcon icon={faInfoCircle} />
                             Must match the first password input field.
                         </p>
-                        <button disabled={!validName || !validPwd || !validMatch ? true : false}>Sign Up</button>
+                        <SignUpButton></SignUpButton>
+                        <button disabled={!validName || !validPwd || !validMatch ? true : false} >Sign Up</button>
                     </form>
                     <p>
                         Already registered?<br />
-                        <span className="line">
+                        <Line>
                             {/*put router link here*/}
                             <a href="#/login">Sign In</a>
-                        </span>
+                        </Line>
                     </p>
                 </section>
             )}

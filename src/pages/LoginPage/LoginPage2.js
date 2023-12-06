@@ -11,6 +11,15 @@ const All = styled.div`
     justify-content: center;
 `;
 
+const SignInButton = styled.div`
+    margin-top: 14px;
+`;
+
+const Line = styled.div`
+    text-decoration: underline;
+
+`;
+
 const Login = () => {
     const { setAuth } = useContext(AuthContext);
     const userRef = useRef();
@@ -98,14 +107,15 @@ const Login = () => {
                             value={pwd}
                             required
                         />
+                        <SignInButton></SignInButton>
                         <button>Sign In</button>
                     </form>
                     <p>
                         Need an Account?<br />
-                        <span className="line">
+                        <Line>
                             {/*put router link here*/}
                             <a href="#/register">Sign Up</a>
-                        </span>
+                        </Line>
                     </p>
                 </section>
             )}
