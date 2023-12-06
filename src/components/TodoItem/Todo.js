@@ -26,13 +26,14 @@ function Todo({ handleCloseMask}){
   }
 
   const handleNext = () => {
-    let step = currentStep >= 2? 3: currentStep + 1
+    let step = currentStep >= 2? 1: currentStep + 1
     setCurrentStep(step)
     console.log(`Your registration detail: \n 
       num: ${num} \n 
       title: ${title} \n 
     `)
   }
+  
   const handlePrevious = () => {
     let step = currentStep <= 1? 1: currentStep - 1
     setCurrentStep(step)
@@ -43,8 +44,6 @@ function Todo({ handleCloseMask}){
 
   return(
     <>
-      <TodoList todos = {todoList}/>
-
       <Step1 currentStep={currentStep}
         num={num}
         setNum={setNum}
@@ -56,9 +55,12 @@ function Todo({ handleCloseMask}){
       />
       <Step2 currentStep={currentStep}
         num={num}
+        setNum={setNum}
         title={title}
+        setTitle={setTitle}
         handlePrevious={handlePrevious}
         handleNext={handleNext}
+        handleCloseMask = {handleCloseMask}
         setCurrentStep={setCurrentStep}
       />
     </>

@@ -1,78 +1,39 @@
 import React from "react";
 import styled from "styled-components";
-
+import TodoList from "./TodoList";
 
 const Container = styled.div`
-  height: 100%;
+  box-sizing: border-box;
+  max-height: 440px;
+  height: auto;
   width: 100%;
   display: flex;
   justify-content: center;
   position: absolute;
-  top:40%;
+  top:25%;
 `;
 
 const Content = styled.form`
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   border-radius: 20px;
-  height: 200px;
-  width: 560px;
   box-shadow: 7px 9px 0px 0px #000;
   background-color: rgba(0, 0, 0, 0.7);
   flex-direction: column;
   padding: 0 31px 0 25px;
-
 `;
 
-const Header = styled.div`
-  align-self: stretch;
-  display: flex;
-  margin-top: 28px;
-  align-items: center;
+const HomeworkTitle = styled.div`
+    font-size:44px;
+    color: #FFF8F0;
+    text-align: center;
+    margin-top: 12px;
 `;
 
-const Title = styled.div`
-  color: var(--main-color, #fff8f0);
-  text-transform: uppercase;
-  margin: auto 0;
-  font: 400 24px/30px Caveat Brush, sans-serif;
-`;
-
-const InputTitle = styled.input.attrs({
-  type:"text",
-  name:"title"
-})`
-  color: #000;
-  border-radius: 10px;
-  background-color: #fff8f0;
-  align-items: start;
-  font-size:24px;
-  height: 36px;
-  width: 384px;
-  padding-left: 8px;
-`;
-
-const TotalQuestions = styled.div`
-  color: #fff8f0;
-  display: flex;
-  align-items: center;
-  align-self: stretch;
-  margin-top: 20px;
-  font-size: 24px;
-`;
-
-const InputQuestion = styled.input.attrs({
-  name: 'num',
-})`
-  height: 36px;
-  width: 104px;
-  border-radius:10px;
-  margin-left: 8px;
-  margin-right:8px;
-  background-color: #fff8f0;
-  font-size: 20px;
-  padding-left: 8px;
+const TodoContainer = styled.div`
+    height: 100%;
+    overflow-y: scroll;
 `;
 
 const Actions = styled.div`
@@ -81,7 +42,7 @@ const Actions = styled.div`
   max-width: 100%;
   justify-content: space-between;
   gap: 20px;
-  margin: 25px 0 9px;
+  margin: 25px 0 9px 12px;
 `;
 
 const Button = styled.button.attrs({
@@ -110,18 +71,20 @@ const OrangeButton = styled(Button).attrs(
 `;
 
 
-
 export default function TodoForm2(props){
   
-  const {currentStep, setNum, setTitle, title, num} = props
+  const {currentStep, setNum, setTitle, num} = props
   
 
   if(currentStep !== 2){
     return null
   }
 
-  const handleTitleChange = (e) => {
-   setTitle(e.target.value)
+  const handleFinish = (e) => {
+   setNum('')
+   setTitle('')
+   props.handleNext()
+   props.handleCloseMask()
   }
 
   const handleNumChange = (e) => {
@@ -135,18 +98,15 @@ export default function TodoForm2(props){
 	return(
     <Container>
       <Content onSubmit={handleSubmit}>
-        <Header>
-          <Title>Test：</Title>
-          <InputTitle onChange={handleTitleChange}></InputTitle>
-        </Header>
-        <TotalQuestions>
-          共有
-          <InputQuestion onChange={handleNumChange}></InputQuestion>
-          大題
-        </TotalQuestions>
+        <HomeworkTitle>
+          {props.title}
+        </HomeworkTitle>
+        <TodoContainer>
+          <TodoList num={num}/>
+        </TodoContainer>
         <Actions>
           <Button onClick={props.handlePrevious}>返回</Button>
-          <OrangeButton onClick={props.handleNext}>下一步</OrangeButton>
+          <OrangeButton onClick={handleFinish}>下一步</OrangeButton>
         </Actions>
       </Content>
     </Container>
