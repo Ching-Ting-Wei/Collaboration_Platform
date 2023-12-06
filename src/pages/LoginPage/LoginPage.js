@@ -1,13 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import {useNavigate} from "react-router-dom";
-<<<<<<< HEAD
 import Header from "../../components/Header";
 
 
-=======
-import axios from "axios";
->>>>>>> e394ae9713c87d9d627f62341c1cf91583de42d3
 
 
 
