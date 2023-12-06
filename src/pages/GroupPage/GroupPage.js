@@ -2,7 +2,7 @@ import React from "react";
 import Todo from "../../components/TodoItem";
 import styled from "styled-components";
 import { useState} from 'react';
-import UserHeader from "../../components/UserHeader";
+import UserHeader from "../../components/Header";
 
 const Mask = styled.div`
   display: ${({ $show }) => ($show ? 'block' : 'none')};
