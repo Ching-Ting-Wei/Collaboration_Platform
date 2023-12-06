@@ -57,7 +57,7 @@ export default function App(){
       <Brand>Focus Orange Tree</Brand>
       <NavbarList>
         <Nav to='/' $active={location.pathname === '/'}>Introduction</Nav>
-        <Nav to='/grouppage' $active={location.pathname === '/grouppage'}>Try it</Nav>
+        <Nav to='/userpage' $active={location.pathname === '/userpage'}>Try it</Nav>
       </NavbarList>
     </LContainer>
     <NavbarList>

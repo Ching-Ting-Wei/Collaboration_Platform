@@ -4,6 +4,7 @@ import {HashRouter as  Router,  Routes, Route} from "react-router-dom";
 import LoginPage from '../../pages/LoginPage'
 import HomePage from '../../pages/HomePage'
 import GroupPage from "../../pages/GroupPage";
+import UserPage from "../../pages/UserPage";
 import RegisterPage from "../../pages/RegisterPage";
 import Header from "../Header";
 import 'normalize.css'
@@ -30,7 +31,7 @@ function App() {
           <Routes>
             <Route element={<HomePage/>} exact path={"/"}></Route>
             <Route element={<LoginPage/>} path={"/login"}></Route>
-            <Route element={<GroupPage/>} path={"/grouppage"}></Route>
+            <Route element={<UserPage/>} path={"/userpage"}></Route>
             <Route element={<RegisterPage/>} path={"/register"}></Route>
           </Routes>
         </BG>
