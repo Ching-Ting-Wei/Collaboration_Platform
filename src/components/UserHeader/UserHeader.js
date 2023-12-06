@@ -21,7 +21,7 @@ const Brand = styled.div`
 
 const NavbarList = styled.div`
     display: flex;
-    align-items: center;
+    align-items: end;
 `;
 
 const Nav = styled(Link)`
@@ -65,10 +65,8 @@ export default function App(){
         </LContainer>
 
         <NavbarList>
-            
-            <Nav to='/grouppage' $active={location.pathname === '/grouppage'}>Try it</Nav>
+            <Nav to='/grouppage' $active={location.pathname === '/grouppage'}>add hw</Nav>
         </NavbarList>
-        <i class="fa-solid fa-user"></i>
         </HeaderContainter>
         </>
     );
