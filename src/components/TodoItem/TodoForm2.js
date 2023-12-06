@@ -2,19 +2,34 @@ import React from "react";
 import styled from "styled-components";
 import TodoList from "./TodoList";
 
+const All = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border: 2px solid #ccc; */
+`;
+
 const Container = styled.div`
   box-sizing: border-box;
   max-height: 440px;
   height: auto;
-  width: 100%;
+  width: 400px;
   display: flex;
   justify-content: center;
+  align-items: center;
   position: absolute;
   top:25%;
+  /* border: 2px solid #ccc; */
 `;
 
 const Content = styled.form`
   display: flex;
+  max-height: 440px;
+  height: auto;
+  
+
   justify-content: start;
   align-items: center;
   border-radius: 20px;
@@ -22,6 +37,7 @@ const Content = styled.form`
   background-color: rgba(0, 0, 0, 0.7);
   flex-direction: column;
   padding: 0 31px 0 25px;
+  /* border: 2px solid #f0f */
 `;
 
 const HomeworkTitle = styled.div`
@@ -98,6 +114,7 @@ export default function TodoForm2(props){
   }
 
 	return(
+    <All>
     <Container>
       <Content onSubmit={handleSubmit}>
         <HomeworkTitle>
@@ -112,5 +129,6 @@ export default function TodoForm2(props){
         </Actions>
       </Content>
     </Container>
+    </All>
 	);
 }

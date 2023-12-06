@@ -81,7 +81,7 @@ const Register = () => {
     }
 
     return (
-        <>
+        <div class="all">
             {success ? (
                 <section>
                     <h1>Success!</h1>
@@ -164,19 +164,19 @@ const Register = () => {
                             <FontAwesomeIcon icon={faInfoCircle} />
                             Must match the first password input field.
                         </p>
-
+                        <div></div>
                         <button disabled={!validName || !validPwd || !validMatch ? true : false}>Sign Up</button>
                     </form>
                     <p>
                         Already registered?<br />
                         <span className="line">
                             {/*put router link here*/}
-                            <a href="#">Sign In</a>
+                            <a href="#/login">Sign In</a>
                         </span>
                     </p>
                 </section>
             )}
-        </>
+        </div>
     )
 }
 

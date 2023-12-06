@@ -14,7 +14,7 @@ html {
 
 body {
     min-height: 100vh;
-    background-color: dodgerblue;
+    background-color: #fff8f0;
 }
 
 .App {
@@ -26,6 +26,14 @@ body {
   padding: 1rem 0.5rem;
 }
 
+.all {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: #686963; */
+}
+
 section {
     width: 100%;
     max-width: 420px;
@@ -34,7 +42,11 @@ section {
     flex-direction: column;
     justify-content: flex-start;
     padding: 1rem;
-    background-color: rgba(0,0,0,0.4);
+    background-color: #686963;
+    border-radius: 20px;
+    border-color: #000000;
+    border-style: solid;
+    border-width: 4px;
 }
 
 form {
@@ -112,3 +124,4 @@ button {
 .line {
     display: inline-block;
 }
+
