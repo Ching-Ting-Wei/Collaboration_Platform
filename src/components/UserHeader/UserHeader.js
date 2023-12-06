@@ -1,6 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import {Link, useLocation} from "react-router-dom";
+import Todo from "../TodoItem";
+import { useState} from 'react';
+
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShrimp, faFileCirclePlus, faCommentDots } from '@fortawesome/free-solid-svg-icons'
+// import { Button } from "react-bootstrap";
 
 const HeaderContainter = styled.div`
     height: 64px;
@@ -22,6 +29,7 @@ const Brand = styled.div`
 const NavbarList = styled.div`
     display: flex;
     align-items: end;
+    justify-content: center;
 `;
 
 const Nav = styled(Link)`
@@ -49,12 +57,53 @@ const LContainer = styled.div`
     }
 `;
 
+const Mask = styled.div`
+  display: ${({ $show }) => ($show ? 'block' : 'none')};
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  z-index: 999; 
+`;
+
+const Button = styled.button`
+  /* padding: 10px 20px; */
+  background-color: #686963;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 30px;
+  border-radius: 100%;
+
+`;
+
+const UserPic = styled.div`
+    border-radius: 50%;
+    border: 1px;
+    border-style: solid;
+    border-color: black;
+    background-color: black;
+`;
+
 export default function App(){
     const location = useLocation();
 
+    const [showMask, setShowMask] = useState(false);
+
+    const toggleMask = () => {
+        setShowMask(!showMask);
+      };
+    
+    const handleCloseMask = () => {
+        setShowMask(false);
+    };
+
+
     return(
         <>
-        <script src="https://kit.fontawesome.com/ed1c57dac5.js" crossorigin="anonymous"></script>
         <HeaderContainter>
         <LContainer>
         <Brand>Focus Orange Tree</Brand>
@@ -65,7 +114,20 @@ export default function App(){
         </LContainer>
 
         <NavbarList>
-            <Nav to='/grouppage' $active={location.pathname === '/grouppage'}>add hw</Nav>
+            
+            <Button onClick={toggleMask}> <FontAwesomeIcon icon={faFileCirclePlus} /> </Button>
+            {/* <FontAwesomeIcon icon={faFileCirclePlus} />   */}
+            <Button> <FontAwesomeIcon icon={faCommentDots} /> </Button>
+            <UserPic>
+            <Button> <FontAwesomeIcon icon={faShrimp} /> </Button>
+            </UserPic>
+            
+
+            <Mask $show={showMask}>
+                <Todo handleCloseMask={handleCloseMask}></Todo>
+            </Mask>
+
+            {/* <Nav to='/grouppage' $active={location.pathname === '/grouppage'}>add hw</Nav> */}
         </NavbarList>
         </HeaderContainter>
         </>
