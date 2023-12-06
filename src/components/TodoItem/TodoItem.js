@@ -31,7 +31,7 @@ export default function TodoItem(props) {
             checked={checkboxState.option}
             onChange={handleCheckboxChange}
             />
-            新增子題目  
+            <span> 新增子題目</span>
         </Container_1>
     )
 }
