@@ -58,6 +58,7 @@ export default function App(){
       <NavbarList>
         <Nav to='/' $active={location.pathname === '/'}>Introduction</Nav>
         <Nav to='/userpage' $active={location.pathname === '/userpage'}>Try it</Nav>
+        <Nav to='/grouppage' $active={location.pathname === '/grouppage'}>Group</Nav>
       </NavbarList>
     </LContainer>
     <NavbarList>

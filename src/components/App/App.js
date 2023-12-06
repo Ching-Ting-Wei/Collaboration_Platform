@@ -33,6 +33,7 @@ function App() {
             <Route element={<LoginPage/>} path={"/login"}></Route>
             <Route element={<UserPage/>} path={"/userpage"}></Route>
             <Route element={<RegisterPage/>} path={"/register"}></Route>
+            <Route element={<GroupPage/>} path={"/grouppage"}></Route>
           </Routes>
         </BG>
       </Router>
