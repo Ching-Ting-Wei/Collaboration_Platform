@@ -1,8 +1,9 @@
-export default function HomePage() {
+
+export default function UserPage() {
     return(
       <div>UserPagePage</div>
     );
-  }
+}
   
   
   
