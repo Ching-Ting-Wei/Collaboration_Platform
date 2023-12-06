@@ -2,6 +2,7 @@ import React from "react";
 import Todo from "../../components/TodoItem";
 import styled from "styled-components";
 import { useState} from 'react';
+import UserHeader from "../../components/UserHeader";
 
 const Mask = styled.div`
   display: ${({ $show }) => ($show ? 'block' : 'none')};
@@ -39,12 +40,15 @@ export default function GroupPage() {
 
 
   return (
+    <>
+    <UserHeader></UserHeader>
     <div>
       <Button onClick={toggleMask}>Add HomeWork</Button>
       <Mask $show={showMask}>
 	  	  <Todo handleCloseMask={handleCloseMask}></Todo>
       </Mask>
     </div>
+    </>
   );
 }
 

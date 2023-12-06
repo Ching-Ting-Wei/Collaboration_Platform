@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import {useNavigate} from "react-router-dom";
+import Header from "../../components/Header";
 
 
 
@@ -73,7 +74,8 @@ const LoginButton = styled.button`
 const SignupButton = styled(LoginButton)`
     background-color: #000000;
     color: #ffffff;
-`
+`;
+
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -87,6 +89,8 @@ export default function LoginPage() {
     navigate('/register')
   };
   return(
+    <>
+    <Header></Header>
     <Content>
       <InputContainer>
         <LoginTitle>Account</LoginTitle>
@@ -109,5 +113,6 @@ export default function LoginPage() {
         Sign Up
       </SignupButton>
     </Content>
+    </>
   )
 }

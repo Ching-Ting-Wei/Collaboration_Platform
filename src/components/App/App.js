@@ -25,7 +25,6 @@ function App() {
       <ResetStyle></ResetStyle>        
       <GlobalStyle></GlobalStyle>   
       <Router>
-        <Header/>
         <BG>
           <Routes>
             <Route element={<HomePage/>} exact path={"/"}></Route>

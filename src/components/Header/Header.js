@@ -6,14 +6,15 @@ const HeaderContainter = styled.div`
     height: 64px;
     display: flex;
     justify-content: space-between;
-    background: #F0F0F0;
-	font: inherit;
-	vertical-align: baseline;
+    background: #686963;
+	  font: inherit;
+	  vertical-align: baseline;
     border-bottom: 1px solid rgba(0,0,0,0.2);
     padding: 0px 32px;
 `;
 
 const Brand = styled.div`
+    color: white;
     font-size: 32px;
     font-weight: bold;
 `;
@@ -24,15 +25,15 @@ const NavbarList = styled.div`
 `;
 
 const Nav = styled(Link)`
+    color: #fff;
     display: flex;
     justify-content: center;
-    font-size: 14px;
+    font-size: 16px;
     align-items: center;
     height: 64px;
     cursor: pointer;
     width: 100px;
     box-sizing: border-box;
-    color: black;
     ${(props)=>
         props.$active &&
         `

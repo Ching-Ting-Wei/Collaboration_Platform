@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import Header from "../../components/Header";
+
+
 const AccountInputBox = styled.input`
   border-radius: 10px;
   border: 1px solid #000;
@@ -73,6 +76,8 @@ export default function RegisterPage() {
   };
 
   return(
+    <>
+    <Header></Header>
     <Content>
       <InputContainer>
         <LoginTitle>Account</LoginTitle>
@@ -97,6 +102,7 @@ export default function RegisterPage() {
         Cancel
       </SignupButton>
     </Content>
+    </>
   )
 }
 
