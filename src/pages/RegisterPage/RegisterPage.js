@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+
 const AccountInputBox = styled.input`
   border-radius: 10px;
   border: 1px solid #000;
@@ -86,8 +87,7 @@ export default function RegisterPage() {
         <LoginTitle>Confirm Password</LoginTitle>
         <PasswordInputBox></PasswordInputBox>
       </InputContainer>
-
-     
+      
 
       <LoginButton>
         Create

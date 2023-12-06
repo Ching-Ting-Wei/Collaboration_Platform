@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import {useNavigate} from "react-router-dom";
-
-
+import axios from "axios";
 
 
 
@@ -76,6 +75,17 @@ const SignupButton = styled(LoginButton)`
 `
 
 export default function LoginPage() {
+
+  // useEffect(()=>{
+  //   axios.get('http://localhost:12345/users',{})
+  //   .then(res=>{
+  //     console.log(res)
+  //   })
+  //   .catch(err =>{
+  //     console.log(err)
+  //   })
+  // }, [])
+
   const navigate = useNavigate();
   const handleLoginClick = () => {
     

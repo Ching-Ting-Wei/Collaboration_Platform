@@ -6,6 +6,7 @@ import HomePage from '../../pages/HomePage'
 import GroupPage from "../../pages/GroupPage";
 import RegisterPage from "../../pages/RegisterPage";
 import Header from "../Header";
+import 'normalize.css'
 import {ResetStyle, GlobalStyle} from '../globalStyle'
 
 const Root = styled.div`
@@ -22,8 +23,8 @@ const BG  = styled.div`
 function App() {
   return(
     <Root>
-      <ResetStyle></ResetStyle>        
-      <GlobalStyle></GlobalStyle>   
+      {/* <ResetStyle></ResetStyle>        
+      <GlobalStyle></GlobalStyle>    */}
       <Router>
         <Header/>
         <BG>
