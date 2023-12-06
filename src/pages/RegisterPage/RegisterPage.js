@@ -91,8 +91,7 @@ export default function RegisterPage() {
         <LoginTitle>Confirm Password</LoginTitle>
         <PasswordInputBox></PasswordInputBox>
       </InputContainer>
-
-     
+      
 
       <LoginButton>
         Create

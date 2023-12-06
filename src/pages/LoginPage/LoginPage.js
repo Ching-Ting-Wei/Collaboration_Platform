@@ -1,9 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import {useNavigate} from "react-router-dom";
+<<<<<<< HEAD
 import Header from "../../components/Header";
 
 
+=======
+import axios from "axios";
+>>>>>>> e394ae9713c87d9d627f62341c1cf91583de42d3
 
 
 
@@ -78,6 +82,17 @@ const SignupButton = styled(LoginButton)`
 
 
 export default function LoginPage() {
+
+  // useEffect(()=>{
+  //   axios.get('http://localhost:12345/users',{})
+  //   .then(res=>{
+  //     console.log(res)
+  //   })
+  //   .catch(err =>{
+  //     console.log(err)
+  //   })
+  // }, [])
+
   const navigate = useNavigate();
   const handleLoginClick = () => {
     
