@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {Link, useLocation} from "react-router-dom";
 import Todo from "../TodoItem";
 import { useState} from 'react';
+import MessageBoard from "../MessageBoard/MessageBoard";
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -88,10 +89,25 @@ const UserPic = styled.div`
     background-color: black;
 `;
 
+// Board 
+const MaskOfBoard = styled.div`
+    display: ${({ $show }) => ($show ? 'block' : 'none')};
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0); 
+    z-index: 999; 
+`;
+
+
+
 export default function App(){
     const location = useLocation();
 
     const [showMask, setShowMask] = useState(false);
+    const [isBoardOpen, setOpenBoard] = useState(false);
 
     const toggleMask = () => {
         setShowMask(!showMask);
@@ -101,28 +117,50 @@ export default function App(){
         setShowMask(false);
     };
 
+    const openBoard = () => {
+        setOpenBoard(true);
+    };
+    
+    const closeBoard = () => {
+        setOpenBoard(false);
+    };
+
 
     return(
         <>
         <HeaderContainter>
+        
         <LContainer>
         <Brand>Focus Orange Tree</Brand>
+        {/* 右邊的bar */}
         <NavbarList>
             <Nav to='/' $active={location.pathname === '/'}>Introduction</Nav>
-            
         </NavbarList>
+
         </LContainer>
 
+        {/* 左邊的bar */}
         <NavbarList>
-            
-            <Button onClick={toggleMask}> <FontAwesomeIcon icon={faFileCirclePlus} /> </Button>
-            {/* <FontAwesomeIcon icon={faFileCirclePlus} />   */}
-            <Button> <FontAwesomeIcon icon={faCommentDots} /> </Button>
+            {/* 加功課 */}
+            <Button onClick={toggleMask}> 
+                <FontAwesomeIcon icon={faFileCirclePlus} /> 
+            </Button>
+
+            {/* 討論區 */}
+            <Button onClick={openBoard}> 
+                <FontAwesomeIcon icon={faCommentDots} /> 
+            </Button>
+            <MaskOfBoard $show={isBoardOpen}>
+                <MessageBoard closeBoard={closeBoard}></MessageBoard>
+            </MaskOfBoard>
+
+
+            {/* 使用者圖示 */}
             <UserPic>
-            <Button> <FontAwesomeIcon icon={faShrimp} /> </Button>
+                <Button> <FontAwesomeIcon icon={faShrimp} /> </Button>
             </UserPic>
             
-
+            {/* 加功課的背景遮罩 */}
             <Mask $show={showMask}>
                 <Todo handleCloseMask={handleCloseMask}></Todo>
             </Mask>
