@@ -6,6 +6,7 @@ import HomePage from '../../pages/HomePage'
 import GroupPage from "../../pages/GroupPage";
 import UserPage from "../../pages/UserPage";
 import RegisterPage from "../../pages/RegisterPage";
+import User from "../../pages/User";
 import Header from "../Header";
 import 'normalize.css'
 import {ResetStyle, GlobalStyle} from '../globalStyle'
@@ -34,6 +35,7 @@ function App() {
             <Route element={<UserPage/>} path={"/userpage"}></Route>
             <Route element={<RegisterPage/>} path={"/register"}></Route>
             <Route element={<GroupPage/>} path={"/grouppage"}></Route>
+            <Route element={<User/>} path={"/user"}></Route>
           </Routes>
         </BG>
       </Router>
