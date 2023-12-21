@@ -4,7 +4,7 @@ import {HashRouster as  Router, Switch, Route} from "react-router-dom";
 
 import Title_img from "../../images/Title_img.jpg"
 import background from "../../images/background.png"
-import UserHeader from "../../components/UserHeader";
+import UserHeader from "../../components/Header";
 
 const Title_back = {
   backgroundSize: '100% 100%',

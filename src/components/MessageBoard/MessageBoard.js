@@ -1,19 +1,54 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import { Button } from "react-bootstrap";
+import styled , { keyframes } from "styled-components";
+import axios from '../../api/axios';
+const MESSAGE_URL = '/getmessage';
+const CHECK_URL = '/checkLoginStatus';
+const NEWMESSAGE = '/newMessage';
 
 // Comments API
 const API_ENDPOINT =
   "https://student-json-api.lidemy.me/comments?_sort=createdAt&_order=desc";
 
+const slideIn = keyframes`
+from {
+  transform: translateX(100%);
+}
+to {
+  transform: translateX(0);
+}
+`;
+
+const slideOut = keyframes`
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+`;
+
+const All = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+  
 const Page = styled.div`
-  max-width: 800px;
+  width: 760px;
+  height: 640px;
   margin: 0 auto;
   font-family: "monospace", "微軟正黑體";
   box-shadow: 0px 0px 16px rgb(199, 197, 197);
   border-radius: 8px;
   padding: 12px 28px;
   color: #6c6c6c;
+  background: #fff;
   box-sizing: border-box;
+  animation: ${({ isOpen }) => (isOpen ? slideIn : slideOut)} 0.3s ease-in-out;
+  overflow-y: scroll;
 `;
 
 const Title = styled.h1`
@@ -34,6 +69,7 @@ const MessageTextArea = styled.textarea`
 `;
 
 const SubmitButton = styled.button`
+  width:68px;
   margin-top: 8px;
   color: #ddd;
   background-color: #343a40;
@@ -41,7 +77,9 @@ const SubmitButton = styled.button`
   border-radius: 4px;
   font-size: 16px;
   padding: 6px 12px;
+  cursor: pointer;
 `;
+
 
 const MessageList = styled.div`
   margin-top: 16px;
@@ -76,9 +114,12 @@ const ErrorMessage = styled.div`
   color: #db4c3f;
 `;
 
+
+
+
 function Message({ author, time, children }) {
   return (
-    <MessageContainer>
+    <MessageContainer >
       <MessageHead>
         <MessageAuthor>{author}</MessageAuthor>
         <MessageTime>{time}</MessageTime>
@@ -88,10 +129,66 @@ function Message({ author, time, children }) {
   );
 }
 
-function App() {
+function App(props) {
   const [messages, setMessages] = useState([]);
+  const [messages1, setMessages1] = useState([]);
   const [apiError, setApiError] = useState(null);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [userData, setUserData] = useState(null);
+  const [user_id, setUserId] = useState('');
+  const [content, setContent] = useState('');
 
+  // 防止點表單會消失
+  const handleBoardClick = (e) => {
+    e.stopPropagation();
+  };
+
+  const handleTextareaChange = (e) => {
+    setContent(e.target.value);
+  };
+
+  const handleFormSubmit = (e) => {
+    // 阻止預設的表單發送行為
+    e.preventDefault();
+    axios.post(NEWMESSAGE, JSON.stringify({user_id, content}),{
+      headers: { 'Content-Type': 'application/json' }
+    }
+
+    )
+  };
+
+  axios.get(CHECK_URL, { withCredentials: true })
+  .then(response => {
+    if (response.data.loggedIn) {
+      setLoggedIn(true)
+      setUserData(response.data.user.user)
+      setUserId(response.data.user.id)
+      // 如果已登入，可以根據用戶資訊執行相應的操作
+    } else {
+      console.log('User is not logged in');
+      // 如果未登入，可以執行未登入的相應處理
+    }
+  })
+  .catch(error => {
+    console.error('Error checking login status:', error);
+    // 處理錯誤情況
+  });
+
+
+  useEffect(() => {
+    axios.get(MESSAGE_URL)
+      .then(response => {
+        if (response.data) {
+          setMessages1(response.data);
+         
+        } 
+      })
+      .catch(error => {
+        console.error('pc123', error);
+        
+      });
+  }, []); 
+  
   // 第二個參數傳入 [] 代表只在 componet mount 後執行
   useEffect(() => {
     fetch(API_ENDPOINT)
@@ -103,33 +200,38 @@ function App() {
         setApiError(err.message);
       });
   }, []);
-
+  
   return (
-    <Page>
-      <Title>React 留言板</Title>
-      <MessageForm>
+
+    <All>
+    <Page onClick={handleBoardClick} isOpen={props.isBoardOpen}>
+      <Title>留言板</Title>
+      <MessageForm onSubmit={handleFormSubmit}>
         <MessageLable>留言內容</MessageLable>
-        <MessageTextArea rows={8} />
-        <SubmitButton>送出</SubmitButton>
+        <MessageTextArea rows={8} 
+          value={content}
+          onChange={handleTextareaChange}
+        />
+
+        <SubmitButton >送出</SubmitButton>
       </MessageForm>
-      {apiError && (
-        <ErrorMessage>
-          {/* 直接 render object 會出錯，因此需轉成 string */}
-          Something went wrong. {apiError.toString()}
-        </ErrorMessage>
-      )}
       <MessageList>
-        {messages.map((message) => (
+        
+        {messages1.map((message) => (
           <Message
-            key={message.id}
-            author={message.nickname}
-            time={message.createdAt}
+            // key={message.id}
+            // author={message.user}
+            // time={message.createdAt}
           >
-            {message.body}
+            {message.content}
+            {/* console.log("messages1:", messages1); */}
           </Message>
         ))}
       </MessageList>
+
+
     </Page>
+    </All>
   );
 }
 

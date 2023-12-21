@@ -99,6 +99,19 @@ const MaskOfBoard = styled.div`
     height: 100%;
     background-color: rgba(0, 0, 0, 0); 
     z-index: 999; 
+    overflow-y: scroll;
+
+    &:before {
+        content: "";
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        z-index: -1;
+    }
 `;
 
 
@@ -151,8 +164,8 @@ export default function App(){
             <Button onClick={openBoard}> 
                 <FontAwesomeIcon icon={faCommentDots} /> 
             </Button>
-            <MaskOfBoard $show={isBoardOpen}>
-                <MessageBoard closeBoard={closeBoard}></MessageBoard>
+            <MaskOfBoard $show={isBoardOpen} onClick={closeBoard}>
+                <MessageBoard isBoardOpen={isBoardOpen} closeBoard={closeBoard} setOpenBoard ={setOpenBoard}></MessageBoard>
             </MaskOfBoard>
 
 
