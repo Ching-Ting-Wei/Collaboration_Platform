@@ -7,7 +7,7 @@ import styled from "styled-components";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const REGISTER_URL = '/users';
+const REGISTER_URL = '/register';
 
 const SignUpButton = styled.div`
     margin-top: 14px;

@@ -148,6 +148,7 @@ export default function App(){
         {/* 右邊的bar */}
         <NavbarList>
             <Nav to='/' $active={location.pathname === '/'}>Introduction</Nav>
+            <Nav to='/userpage' $active={location.pathname === '/userpage'}>Try it</Nav>
         </NavbarList>
 
         </LContainer>

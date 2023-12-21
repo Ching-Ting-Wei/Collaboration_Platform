@@ -51,11 +51,11 @@ const Login = () => {
             );
             console.log(JSON.stringify(response?.data));
             // console.log(JSON.stringify(response));
-            const accessToken = response?.data?.accessToken;
-            const roles = response?.data?.roles;
-            console.log(accessToken)
-            console.log(roles)
-            setAuth({ user, pwd, roles, accessToken });
+      
+            // const accessToken = response?.data?.accessToken;
+            // const roles = response?.data?.roles;
+            setSuccess(true);
+            setAuth({ user, pwd});
             setUser('');
             setPwd('');
             setSuccess(true);
@@ -69,7 +69,7 @@ const Login = () => {
             } else {
                 setErrMsg('Login Failed');
             }
-            errRef.current.focus();
+            // errRef.current.focus();
         }
     }
 
@@ -77,10 +77,10 @@ const Login = () => {
         <All>
             {success ? (
                 <section>
-                    <h1>You are logged in!</h1>
+                    <h1>You are logged in! {user}</h1>
                     <br />
                     <p>
-                        <a href="#/">Go to Home</a>
+                        <a href="#/grouppage">Go to Home</a>
                     </p>
                 </section>
             ) : (
