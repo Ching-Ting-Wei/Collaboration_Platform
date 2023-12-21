@@ -110,7 +110,6 @@ const OrangeButton = styled(Button).attrs(
 `;
 
 
-
 export default function TodoForm1(props){
   
   const {currentStep, setNum, setTitle, num, title} = props

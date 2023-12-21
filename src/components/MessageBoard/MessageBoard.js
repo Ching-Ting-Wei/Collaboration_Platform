@@ -32,6 +32,7 @@ const MessageTextArea = styled.textarea`
   width: 95%;
   border-color: rgba(0, 0, 0, 0.125);
 `;
+
 const SubmitButton = styled.button`
   margin-top: 8px;
   color: #ddd;

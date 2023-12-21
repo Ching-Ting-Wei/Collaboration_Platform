@@ -39,9 +39,6 @@ function Todo({ handleCloseMask}){
     setCurrentStep(step)
   }
 
-
-
-
   return(
     <>
       <Step1 currentStep={currentStep}
