@@ -5,6 +5,8 @@ import axios from '../../api/axios';
 const MESSAGE_URL = '/getmessage';
 const CHECK_URL = '/checkLoginStatus';
 const NEWMESSAGE = '/newMessage';
+const DELETE = '/posts/';
+
 
 // Comments API
 const API_ENDPOINT =
@@ -96,6 +98,8 @@ const MessageContainer = styled.div`
 
 const MessageHead = styled.div`
   display: flex;
+  align-items: center;
+  margin-bottom: 24px;
 `;
 
 const MessageAuthor = styled.div`
@@ -114,15 +118,29 @@ const ErrorMessage = styled.div`
   color: #db4c3f;
 `;
 
+const MessageDeleteButton = styled.div`
+  margin-left: 24px;
+  padding: 5px;
+  border-radius: 5px;
+  background: #db4c3f;
+  color: white;
+`;
 
 
 
-function Message({ author, time, children }) {
+
+function Message({ author, time, children, handleDeleteMessage, post_id }) {
   return (
     <MessageContainer >
       <MessageHead>
         <MessageAuthor>{author}</MessageAuthor>
         <MessageTime>{time}</MessageTime>
+        <MessageDeleteButton
+          onClick={() => {           
+            handleDeleteMessage(post_id);
+          }}>
+            刪除
+        </MessageDeleteButton>
       </MessageHead>
       <MessageBody>{children}</MessageBody>
     </MessageContainer>
@@ -130,13 +148,30 @@ function Message({ author, time, children }) {
 }
 
 function App(props) {
-  const [messages, setMessages] = useState([]);
+  // const [messages, setMessages] = useState();
   const [messages1, setMessages1] = useState([]);
   const [apiError, setApiError] = useState(null);
   const [loggedIn, setLoggedIn] = useState(false);
   const [userData, setUserData] = useState(null);
   const [user_id, setUserId] = useState('');
   const [content, setContent] = useState('');
+  
+  
+  const handleDeleteMessage = (e) => {
+    const url = DELETE + e
+    axios.delete(url)
+    .then (response => {
+      return axios.get(MESSAGE_URL);
+    })
+    .then(response => {
+      // 更新留言狀態
+      setMessages1(response.data);
+      setContent('');
+    })
+    .catch(error => {
+      console.error('Error submitting message:', error);
+    });
+  }
 
   // 防止點表單會消失
   const handleBoardClick = (e) => {
@@ -147,16 +182,34 @@ function App(props) {
     setContent(e.target.value);
   };
 
+  // 按enter就能送出訊息
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      handleFormSubmit(e);
+    }
+  };
+
+  // 打字送出
   const handleFormSubmit = (e) => {
     // 阻止預設的表單發送行為
     e.preventDefault();
     axios.post(NEWMESSAGE, JSON.stringify({user_id, content}),{
       headers: { 'Content-Type': 'application/json' }
-    }
-
-    )
+    })
+    .then (response => {
+      return axios.get(MESSAGE_URL);
+    })
+    .then(response => {
+      // 更新留言状态
+      setMessages1(response.data);
+      setContent('');
+    })
+    .catch(error => {
+      console.error('Error submitting message:', error);
+    });
   };
 
+  // 顯示留言內容
   axios.get(CHECK_URL, { withCredentials: true })
   .then(response => {
     if (response.data.loggedIn) {
@@ -180,7 +233,6 @@ function App(props) {
       .then(response => {
         if (response.data) {
           setMessages1(response.data);
-         
         } 
       })
       .catch(error => {
@@ -190,16 +242,16 @@ function App(props) {
   }, []); 
   
   // 第二個參數傳入 [] 代表只在 componet mount 後執行
-  useEffect(() => {
-    fetch(API_ENDPOINT)
-      .then((res) => res.json())
-      .then((data) => {
-        setMessages(data);
-      })
-      .catch((err) => {
-        setApiError(err.message);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch(API_ENDPOINT)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setMessages(data);
+  //     })
+  //     .catch((err) => {
+  //       setApiError(err.message);
+  //     });
+  // }, []);
   
   return (
 
@@ -211,21 +263,24 @@ function App(props) {
         <MessageTextArea rows={8} 
           value={content}
           onChange={handleTextareaChange}
+          onKeyDown={handleKeyDown}
         />
-
         <SubmitButton >送出</SubmitButton>
       </MessageForm>
       <MessageList>
         
         {messages1.map((message) => (
+          <>
           <Message
             // key={message.id}
-            // author={message.user}
-            // time={message.createdAt}
+            author={message.user}
+            time={message.created_at}
+            post_id={message.post_id}
+            handleDeleteMessage={handleDeleteMessage}
           >
             {message.content}
-            {/* console.log("messages1:", messages1); */}
           </Message>
+          </>
         ))}
       </MessageList>
 
