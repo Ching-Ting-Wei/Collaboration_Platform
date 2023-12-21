@@ -54,8 +54,7 @@ const Login = () => {
       
             // const accessToken = response?.data?.accessToken;
             // const roles = response?.data?.roles;
-            setSuccess(true);
-            setAuth({ user, pwd});
+            // setAuth({ user, pwd});
             setUser('');
             setPwd('');
             setSuccess(true);
